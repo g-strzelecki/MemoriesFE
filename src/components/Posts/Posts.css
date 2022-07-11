@@ -1,0 +1,6 @@
+.posts {
+  flex-grow: 20;
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 10px 5px;
+}
