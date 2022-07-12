@@ -1,0 +1,85 @@
+.card {
+  display: flex;
+  justify-content: column;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+h6 {
+  margin: 0;
+  padding: 5px 0 0 5px;
+}
+
+div.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-left: 0;
+  position: relative;
+}
+
+.image img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.card-upper {
+  color: #fff;
+}
+
+.card-lower {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50%;
+}
+
+div.overlay {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+div.card-edit,
+div.card-delete,
+div.card-like {
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+div.card-like {
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+div.card-delete,
+div.card-like {
+  padding-bottom: 7px;
+}
+
+div.card-like,
+div.card-delete,
+div.card-tags {
+  font-size: 0.7rem;
+}
+
+div.card-tags {
+  padding-top: 5px;
+  color: blue;
+}
+
+div.card-actions {
+  display: flex;
+  justify-content: space-between;
+}
