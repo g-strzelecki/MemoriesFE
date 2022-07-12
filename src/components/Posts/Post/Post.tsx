@@ -12,7 +12,7 @@ interface Props {
 
 export const Post = (props: Props) => {
   
-  const { author, createdAt, tags, title, selectedFile } = props.post;
+  const { author, createdAt, tags, title, selectedFile, likeCount } = props.post;
   const tagsTab = tags.split(',');
   const tagsToDisplay = tagsTab.map(tag => `#${tag}`).join(",");
 
@@ -39,7 +39,7 @@ export const Post = (props: Props) => {
         <div className='card-actions'>
           <div className='card-like'>
             <FontAwesomeIcon icon={faThumbsUp}/>
-            Like
+            {`Likes ${likeCount}`}
           </div>
           <div className='card-delete'>
             Delete

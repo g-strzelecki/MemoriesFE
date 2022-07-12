@@ -75,7 +75,6 @@ export const Form = () => {
   }
 
   const fileUpload = (file: File) => {
-    console.log(file);
     if (file) {
       updateForm('selectedFile', file.name);
       setFile(file);
