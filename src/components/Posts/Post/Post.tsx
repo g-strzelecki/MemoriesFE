@@ -14,7 +14,7 @@ interface Props {
 
 export const Post = (props: Props) => {
 
-  const { post, setPost } = useContext(DataContext);
+  const { setPost } = useContext(DataContext);
   
   const { id, author, createdAt, tags, title, selectedFile, likeCount } = props.post;
   const tagsTab = tags.split(',');
@@ -28,6 +28,8 @@ export const Post = (props: Props) => {
 
       props.deletePost();
 
+      setPost(null);
+
     } catch (error) {
         console.log('Error: ', error);
     }
@@ -39,7 +41,6 @@ export const Post = (props: Props) => {
   };
 
   return (
-    // <div className='card'>
     <>
       <div className='card-upper'>
         <div className='image'>
@@ -69,7 +70,6 @@ export const Post = (props: Props) => {
           </div>
         </div>
       </div>
-    {/* </div> */}
     </>
   )
 };

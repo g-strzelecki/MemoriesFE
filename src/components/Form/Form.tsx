@@ -8,6 +8,7 @@ import { DataContext } from '../../contexts/posts.context';
 import './Form.css';
 
 const formDefault = {
+  id: '',
   title: '',
   message: '',
   author: '',
@@ -18,7 +19,7 @@ const formDefault = {
 
 export const Form = () => {
 
-  const { post, setPosts } = useContext(DataContext);
+  const { post, setPost, setPosts } = useContext(DataContext);
 
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState(null);
@@ -48,31 +49,49 @@ export const Form = () => {
 
     try {
 
-      if(file) {
-        const data = new FormData();
+      if (!post) {
+        
+        if(file) {
+          const data = new FormData();
+    
+          data.append('file', file);
+    
+          await axios.post('//localhost:3001/upload', data)
+            .then((e) => {
+              toast.success('Upload Success');
+            })
+            .catch((e) => {
+              toast.error('Upload Failed');
+            })
+        }
   
-        data.append('file', file);
+        const postRes = await fetch('http://localhost:3001/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form),
+        });
   
-        await axios.post('//localhost:3001/upload', data)
-          .then((e) => {
-            toast.success('Upload Success');
-          })
-          .catch((e) => {
-            toast.error('Upload Failed');
-          })
+        const data = await postRes.json();
+        
+        setId(data.id);
+
+      } else {
+        console.log('PATCH: ', form);
+        const postRes = await fetch(`http://localhost:3001/post/${form.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(form),
+        });
+
+        const data = await postRes.json();
+        
+        setId(data.id);
+
       }
-
-      const postRes = await fetch('http://localhost:3001/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await postRes.json();
-      
-      setId(data.id);
 
     } finally {
 
@@ -80,6 +99,7 @@ export const Form = () => {
       setFile(null);
       setForm(formDefault);
       refreshPosts();
+      setPost(null);
     }
   }
 
