@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 import { PostEntity } from '../../../memories-back/types/post';
 
-interface PostContextType {
+interface PostsContextType {
   posts: PostEntity[] | null;
   setPosts: (posts: PostEntity[] | null) => void;
 }
 
-export const DataContext = createContext<PostContextType>(null!);
+export const DataContext = createContext<PostsContextType>(null!);
