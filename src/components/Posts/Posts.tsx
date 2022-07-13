@@ -8,7 +8,6 @@ export const Posts = () => {
 
   const {posts, setPosts} = useContext(DataContext);
 
-
   const refreshPosts = () => {
     (async () => {
       const res = await fetch('http://localhost:3001/post/search')

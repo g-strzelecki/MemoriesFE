@@ -1,8 +1,9 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React, { SyntheticEvent, useContext, useState } from 'react';
 import { Btn } from '../common/Btn';
 import { FileUploader } from '../FileUploader/FileUploader';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { DataContext } from '../../contexts/posts.context';
 
 import './Form.css';
 
@@ -17,11 +18,22 @@ const formDefault = {
 
 export const Form = () => {
 
+  const { setPosts } = useContext(DataContext);
+
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState(null);
   const [file, setFile] = useState<File | null>(null);
   const [form, setForm] = useState(formDefault);
 
+  
+  const refreshPosts = () => {
+    (async () => {
+      const res = await fetch('http://localhost:3001/post/search')
+      const data = await res.json();
+      setPosts(data);
+    })();
+  }
+  
   if (loading) {
     return <h2>Creating post in progress...</h2>
   }
@@ -64,6 +76,7 @@ export const Form = () => {
       setLoading(false);
       setFile(null);
       setForm(formDefault);
+      refreshPosts();
     }
   }
 
