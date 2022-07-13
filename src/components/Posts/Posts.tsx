@@ -7,6 +7,14 @@ import './Posts.css';
 export const Posts = () => {
 
   const [posts, setPosts] = useState<PostEntity[]>([]);
+
+  const refreshPosts = () => {
+    (async () => {
+      const res = await fetch('http://localhost:3001/post/search')
+      const data = await res.json();
+      setPosts(data);
+    })();
+  }
   
   useEffect(() => {
     (async () => {
@@ -21,12 +29,11 @@ export const Posts = () => {
       <div className="posts">
         {posts.map(post=> (
           <div className="post" key={post.id}>
-            <Post post={post} />
+            <Post post={post} deletePost={refreshPosts}/>
           </div>
         ))
         }
       </div>
     )
-    
   )
 };
