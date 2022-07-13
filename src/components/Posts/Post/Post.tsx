@@ -23,7 +23,7 @@ export const Post = (props: Props) => {
 
       await fetch(`http://localhost:3001/post/${id}`, { method: 'DELETE' });
 
-    props.deletePost();
+      props.deletePost();
 
     } catch (error) {
         console.log('Error: ', error);
