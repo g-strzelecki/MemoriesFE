@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PostEntity } from '../../../../../memories-back/types/post';
-import moment from 'moment';
-
-import './Post.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faTrash } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
+import { DataContext } from '../../../contexts/posts.context';
+
+import './Post.css';
 
 interface Props {
   post: PostEntity;
@@ -12,6 +13,8 @@ interface Props {
 }
 
 export const Post = (props: Props) => {
+
+  const { post, setPost } = useContext(DataContext);
   
   const { id, author, createdAt, tags, title, selectedFile, likeCount } = props.post;
   const tagsTab = tags.split(',');
@@ -28,8 +31,12 @@ export const Post = (props: Props) => {
     } catch (error) {
         console.log('Error: ', error);
     }
-    
   }
+
+  const handleEdit = () => {
+    setPost(props.post);
+    console.log(props.post);
+  };
 
   return (
     // <div className='card'>
@@ -42,7 +49,7 @@ export const Post = (props: Props) => {
           <h6>{author}</h6>
           <h6>{moment(createdAt).fromNow()}</h6>
           </div>
-          <div className='card-edit'>...</div>  
+          <div className='card-edit' onClick={handleEdit}>...</div>  
         </div>
         </div>
       </div>

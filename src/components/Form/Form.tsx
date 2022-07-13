@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useContext, useState } from 'react';
+import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { Btn } from '../common/Btn';
 import { FileUploader } from '../FileUploader/FileUploader';
 import axios from 'axios';
@@ -18,13 +18,16 @@ const formDefault = {
 
 export const Form = () => {
 
-  const { setPosts } = useContext(DataContext);
+  const { post, setPosts } = useContext(DataContext);
 
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState(null);
   const [file, setFile] = useState<File | null>(null);
   const [form, setForm] = useState(formDefault);
 
+  useEffect(() => {
+    post !== null && setForm(post);
+  }, [post]);
   
   const refreshPosts = () => {
     (async () => {

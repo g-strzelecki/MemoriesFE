@@ -10,10 +10,12 @@ import { DataContext } from './contexts/posts.context';
 export const App = () => {
 
   const [posts, setPosts] = useState<PostEntity[] | null>(null);
+  const [post, setPost] = useState<PostEntity | null>(null);
 
+  console.log('Post:', post);
   return (
     <>
-      <DataContext.Provider value={{ posts, setPosts }}>
+      <DataContext.Provider value={{ post, posts, setPost, setPosts }}>
         <div className="App">
           <Header />
           <div className="App-container">
