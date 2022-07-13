@@ -118,16 +118,40 @@ export const Form = () => {
   };
 
   const formClear = () => {
-    setForm(formDefault);
+    
+    if (!post) {
+
+      setForm(formDefault);
+
+    } else {
+      setForm({
+        ...post,
+        title: formDefault.title,
+        message: formDefault.message,
+        author: formDefault.author,
+        tags: formDefault.tags,
+      })
+    }
+    
   };
   
   return (
+
     <form 
       className="add-form" 
       action="" 
       onSubmit={handleSubmit}
     >
-      <h2>Create a Memory</h2>
+      {
+        post 
+        ? 
+        <>
+          <h2>Update Memory</h2>
+          <h4>{`${post.title}`}</h4>
+        </> 
+        : 
+        <h2>Create Memory</h2>
+      }
       <p>
         <label>
           Creator: <br/>
@@ -179,7 +203,7 @@ export const Form = () => {
           />
         </label>
       </p>
-      <FileUploader onFileUpload={fileUpload}/>
+      {(post === null) && <FileUploader onFileUpload={fileUpload}/>}
       <Btn type="submit" text="SUBMIT"/>
       <Btn type="button" text="CLEAR" onClearForm={formClear}/>
     </form>
