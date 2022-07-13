@@ -5,7 +5,7 @@ import { PostEntity } from 'types';
 import './Posts.css';
 
 export const Posts = () => {
-
+  
   const [posts, setPosts] = useState<PostEntity[]>([]);
   
   useEffect(() => {
@@ -21,7 +21,7 @@ export const Posts = () => {
       <div className="posts">
         {posts.map(post=> (
           <div className="post" key={post.id}>
-            <Post post={post} />
+            <Post post={post} postsList={posts} updatePosts={setPosts}/>
           </div>
         ))
         }

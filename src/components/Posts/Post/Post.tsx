@@ -8,13 +8,24 @@ import { faThumbsUp, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   post: PostEntity;
+  updatePosts: PostEntity[];
+  postsList: PostEntity[];
+  tag?: string;
 }
 
 export const Post = (props: Props) => {
   
-  const { author, createdAt, tags, title, selectedFile, likeCount } = props.post;
+  const { id, author, createdAt, tags, title, selectedFile, likeCount } = props.post;
   const tagsTab = tags.split(',');
   const tagsToDisplay = tagsTab.map(tag => `#${tag}`).join(",");
+
+  const handleDelete = () => {
+    if (props.updatePosts) {
+      const refreshPostsList = props.postsList.filter(post => post.id !== id);
+      props.updatePosts(refreshPostsList);
+    }
+    
+  }
 
   return (
     // <div className='card'>
@@ -41,7 +52,7 @@ export const Post = (props: Props) => {
             <FontAwesomeIcon icon={faThumbsUp}/>
             {`Likes ${likeCount}`}
           </div>
-          <div className='card-delete'>
+          <div className='card-delete' onClick={handleDelete}>
             Delete
             <FontAwesomeIcon icon={faTrash}/>
           </div>
