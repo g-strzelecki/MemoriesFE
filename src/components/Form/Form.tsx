@@ -22,6 +22,7 @@ export const Form = () => {
   const { post, setPost, setPosts } = useContext(DataContext);
 
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [id, setId] = useState(null);
   const [file, setFile] = useState<File | null>(null);
   const [form, setForm] = useState(formDefault);
@@ -134,6 +135,17 @@ export const Form = () => {
     }
     
   };
+
+  const formNew = () => {
+
+   if (post) {
+
+    setForm(formDefault);
+    setPost(null);
+
+   }
+
+  }
   
   return (
 
@@ -204,8 +216,9 @@ export const Form = () => {
         </label>
       </p>
       {(post === null) && <FileUploader onFileUpload={fileUpload}/>}
-      <Btn type="submit" text="SUBMIT"/>
+      {!(post === null) && <Btn type="button" text="NEW" onNewForm={formNew}/>}
       <Btn type="button" text="CLEAR" onClearForm={formClear}/>
+      <Btn type="submit" text="SUBMIT"/>
     </form>
   )
 };

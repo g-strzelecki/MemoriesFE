@@ -1,4 +1,6 @@
-import React, { SyntheticEvent, useState } from 'react';
+import React from 'react';
+
+import './FileUploader.css';
 
 interface Props {
   onFileUpload: (file: File) => void;
@@ -17,27 +19,12 @@ export const FileUploader = (props: Props) => {
 
   };
 
-  // const saveFile = (e: SyntheticEvent) => {
-  //   e.preventDefault();
-
-  //   const data = new FormData();
-
-  //   data.append('file', file);
-
-  //   axios.post('//localhost:8000/upload', data)
-  //     .then((e) => {
-  //       toast.success('Upload Success');
-  //     })
-  //     .catch((e) => {
-  //       toast.error('Upload Failed');
-  //     })
-  // };
-
   return (
     <div>
       <label>Upload Your File:</label>
       <input 
         type="file"
+        className="btn-file-upload"
         onChange={onInputChange}
         multiple={false}
       />

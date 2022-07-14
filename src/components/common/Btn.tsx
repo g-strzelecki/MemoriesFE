@@ -6,6 +6,7 @@ interface Props {
   text: string;
   type: string;
   onClearForm?: () => void;
+  onNewForm?: () => void;
 }
 
 export const Btn = (props: Props) => {
@@ -13,6 +14,9 @@ export const Btn = (props: Props) => {
   const onButtonClick = () => {
     if (props.onClearForm) {
       props.onClearForm();
+    }
+    if (props.onNewForm) {
+      props.onNewForm();
     }
   }
 

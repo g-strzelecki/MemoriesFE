@@ -3,4 +3,12 @@ button {
   padding: 5px 0;
   background-color: #2374E1;
   color: white;
+  border: 1px solid black;
+  letter-spacing: 3px;
+  opacity: .6;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 1;
 }

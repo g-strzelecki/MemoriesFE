@@ -1,0 +1,21 @@
+.btn-file-upload {
+  width: 93px;
+  position: relative;
+}
+
+.btn-file-upload:after {
+  content: 'Upload file';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 93px;
+  background: #cdcdcd;
+  color: white;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 2.5;
+  border: 1px solid black;
+  letter-spacing: 1px;
+}
