@@ -23,7 +23,7 @@ export const Form = () => {
 
   const [loading, setLoading] = useState(false);
   // eslint-disable-next-line
-  const [id, setId] = useState(null);
+  const [infoHandle, setInfoHandle] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [form, setForm] = useState(formDefault);
 
@@ -75,11 +75,25 @@ export const Form = () => {
         });
   
         const data = await postRes.json();
-        
-        setId(data.id);
+
+        if (!data.id && data.message) {
+
+          setInfoHandle(data.message);
+
+        } else if (data.id) {
+
+          const newPostCreatedMsg = `New post has been created with ID: ${data.id}`;
+
+          setInfoHandle(newPostCreatedMsg);
+
+        } else {
+
+          setInfoHandle('');
+
+        }
 
       } else {
-        console.log('PATCH: ', form);
+
         const postRes = await fetch(`http://localhost:3001/post/${form.id}`, {
           method: 'PATCH',
           headers: {
@@ -90,7 +104,21 @@ export const Form = () => {
 
         const data = await postRes.json();
         
-        setId(data.id);
+        if (typeof(data) === 'string' && data.length > 0) {
+
+          const newPostCreatedMsg = `Post with ID: ${data} has been modified.`;
+
+          setInfoHandle(newPostCreatedMsg);
+
+        } else if (data.message) {
+
+          setInfoHandle(data.message);
+
+        } else {
+
+          setInfoHandle('');
+
+        }
 
       }
 
@@ -101,6 +129,7 @@ export const Form = () => {
       setForm(formDefault);
       refreshPosts();
       setPost(null);
+
     }
   }
 
@@ -138,12 +167,9 @@ export const Form = () => {
 
   const formNew = () => {
 
-   if (post) {
-
-    setForm(formDefault);
-    setPost(null);
-
-   }
+  setForm(formDefault);
+  setPost(null);
+  setInfoHandle('');
 
   }
   
@@ -154,71 +180,79 @@ export const Form = () => {
       action="" 
       onSubmit={handleSubmit}
     >
-      {
-        post 
-        ? 
-        <>
-          <h2>Update Memory</h2>
-          <h4>{`${post.title}`}</h4>
-        </> 
-        : 
-        <h2>Create Memory</h2>
-      }
-      <p>
-        <label>
-          Creator: <br/>
-          <input
-            type="text"
-            name="author"
-            required
-            maxLength={49}
-            value={form.author}
-            onChange={e => updateForm('author', e.target.value)}
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          Title: <br/>
-          <input
-            type="text"
-            name="title"
-            required
-            maxLength={99}
-            value={form.title}
-            onChange={e => updateForm('title', e.target.value)}
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          Tags (coma separated): <br/>
-          <input
-            type="text"
-            name="tags"
-            required
-            maxLength={99}
-            value={form.tags}
-            onChange={e => updateForm('tags', e.target.value)}
-          />
-        </label>
-      </p>
-      <p>
-        <label>
-          Message: <br/>
-          <textarea
-            name="message"
-            required
-            maxLength={999}
-            value={form.message}
-            onChange={e => updateForm('message', e.target.value)}
-          />
-        </label>
-      </p>
-      {(post === null) && <FileUploader onFileUpload={fileUpload}/>}
-      {!(post === null) && <Btn type="button" text="NEW" onNewForm={formNew}/>}
-      <Btn type="button" text="CLEAR" onClearForm={formClear}/>
-      <Btn type="submit" text="SUBMIT"/>
+      {(infoHandle === '') && 
+      <>
+        {
+          post 
+          ? 
+          <>
+            <h2>Update Memory</h2>
+            <h4>{`${post.title}`}</h4>
+          </> 
+          : 
+          <h2>Create Memory</h2>
+        }
+        <p>
+          <label>
+            Creator: <br/>
+            <input
+              type="text"
+              name="author"
+              required
+              maxLength={49}
+              value={form.author}
+              onChange={e => updateForm('author', e.target.value)}
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Title: <br/>
+            <input
+              type="text"
+              name="title"
+              required
+              maxLength={99}
+              value={form.title}
+              onChange={e => updateForm('title', e.target.value)}
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Tags (coma separated): <br/>
+            <input
+              type="text"
+              name="tags"
+              required
+              maxLength={99}
+              value={form.tags}
+              onChange={e => updateForm('tags', e.target.value)}
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message: <br/>
+            <textarea
+              name="message"
+              required
+              maxLength={999}
+              value={form.message}
+              onChange={e => updateForm('message', e.target.value)}
+            />
+          </label>
+        </p>
+        {(post === null) && <FileUploader onFileUpload={fileUpload}/>}
+        
+        {!(post === null) && <Btn type="button" text="NEW" onNewForm={formNew}/>}
+        <Btn type="button" text="CLEAR" onClearForm={formClear}/>
+        <Btn type="submit" text="SUBMIT"/>
+      </>}
+      {!(infoHandle === '') && <>
+        <div className='info'>{`${infoHandle}`}</div>
+        <Btn type="button" text="NEW" onNewForm={formNew}/>
+      </>}
     </form>
   )
 };

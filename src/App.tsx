@@ -12,7 +12,6 @@ export const App = () => {
   const [posts, setPosts] = useState<PostEntity[] | null>(null);
   const [post, setPost] = useState<PostEntity | null>(null);
 
-  console.log('Post:', post);
   return (
     <>
       <DataContext.Provider value={{ post, posts, setPost, setPosts }}>

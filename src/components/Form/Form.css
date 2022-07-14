@@ -32,6 +32,13 @@
   margin-bottom: 10px;
 }
 
+.info {
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px dotted black;
+  padding: 5px 0;
+}
+
 @media (orientation: landscape) and (min-width:1025px) {
 
   .add-form {

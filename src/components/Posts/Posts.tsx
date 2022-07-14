@@ -24,8 +24,6 @@ export const Posts = () => {
     })();
   }, []);
 
-  console.log('Posts renderinng...');
-
   return (
     !(posts && posts.length > 0) ? <h1>Posts loading...</h1> : (
       <div className="posts">
