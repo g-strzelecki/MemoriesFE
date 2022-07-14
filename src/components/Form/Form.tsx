@@ -22,7 +22,6 @@ export const Form = () => {
   const { post, setPost, setPosts } = useContext(DataContext);
 
   const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line
   const [infoHandle, setInfoHandle] = useState('');
   const [file, setFile] = useState<File | null>(null);
   const [form, setForm] = useState(formDefault);
