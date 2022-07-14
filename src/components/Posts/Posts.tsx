@@ -25,7 +25,9 @@ export const Posts = () => {
   }, []);
 
   return (
-    !(posts && posts.length > 0) ? <h1>Posts loading...</h1> : (
+    !(posts && posts.length > 0) 
+    ? <div className='loading'><h1>Posts loading...</h1></div> 
+    : (
       <div className="posts">
         {posts.map(post=> (
           <div className="post" key={post.id}>

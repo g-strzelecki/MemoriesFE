@@ -18,16 +18,15 @@
   overflow: hidden;
 }
 
-/* .post:nth-child(1) {
-  margin-left: 0px;
-} */
+.loading {
+  color: #fff;
+}
 
 @media (orientation: landscape) and (min-width:768px) {
 
   .posts {
     justify-content: space-between;
   }
-
 
 }
 
