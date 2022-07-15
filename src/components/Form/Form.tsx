@@ -19,7 +19,7 @@ const formDefault = {
 
 export const Form = () => {
 
-  const { post, setPost, setPosts } = useContext(DataContext);
+  const { post, setPost, setPosts, setSearch } = useContext(DataContext);
 
   const [loading, setLoading] = useState(false);
   const [infoHandle, setInfoHandle] = useState('');
@@ -128,6 +128,7 @@ export const Form = () => {
       setForm(formDefault);
       refreshPosts();
       setPost(null);
+      setSearch('');
 
     }
   }
@@ -166,10 +167,11 @@ export const Form = () => {
 
   const formNew = () => {
 
-  setForm(formDefault);
-  setPost(null);
-  setInfoHandle('');
-
+    setForm(formDefault);
+    setPost(null);
+    setInfoHandle('');
+    setSearch('');
+    
   }
   
   return (
