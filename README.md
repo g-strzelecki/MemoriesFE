@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+# MemoriesFE
+Memories Project - Frontend\
+Created to present CRUD functionality with file upload.\
+Designed with React.js\
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link for the backend repository:\
+ [https://github.com/g-strzelecki/MemoriesBE](https://github.com/g-strzelecki/MemoriesBE) 
+
+## Features info
+
+App is RWD build with flex.\
+
+To create new memory post just simply use the form.\
+To delete click on trash icon on single post.\
+To edit memory please clik 3 dots in the top right corner of single memory. This will cause load post data info form. After modifications done please click submit button to save changes.\
+Posts are simply uploaded and showed in the panel automaticaly after changes been made.\
+To search/filter posts by title use input filed in the header and press "search" button to take effect.
 
 ## Available Scripts
 
@@ -19,28 +34,3 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

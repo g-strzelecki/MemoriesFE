@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PostEntity, SimplePostEntity } from 'types';
+import { PostEntity } from 'types';
 import './App.css';
 import { Form } from './components/Form/Form';
 import { Header } from './components/layout/Header';
