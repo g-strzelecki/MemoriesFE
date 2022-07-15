@@ -4,12 +4,21 @@ Created to present CRUD functionality with file upload.\
 Designed with React.js\
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 
+## Info
+
 Link for the backend repository:\
  [https://github.com/g-strzelecki/MemoriesBE](https://github.com/g-strzelecki/MemoriesBE) 
 
+Pull BE repo into folder called: memories-back\
+Pull FE repo into folder called: memories-front
+
+Keep both folders on the same dir level.
+
+Initialize package.json to import dependencies.
+
 ## Features info
 
-App is RWD build with flex.\
+App is RWD build with flex.
 
 To create new memory post just simply use the form.\
 To delete click on trash icon on single post.\
