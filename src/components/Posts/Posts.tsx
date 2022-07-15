@@ -16,6 +16,10 @@ export const Posts = () => {
     })();
   }
 
+  // const refreshLike = () => {
+  //   console.log('Działa');
+  // }
+
   useEffect(() => {
     (async () => {
       const res = await fetch(`http://localhost:3001/post/search/${search}`)
@@ -31,7 +35,7 @@ export const Posts = () => {
       <div className="posts">
         {posts.map(post=> (
           <div className="post" key={post.id}>
-            <Post post={post} deletePost={refreshPosts}/>
+            <Post post={post} refreshPost={refreshPosts} />
           </div>
         ))
         }

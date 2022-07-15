@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { PostEntity } from 'types';
+import React, { useState } from 'react';
+import { PostEntity, SimplePostEntity } from 'types';
 import './App.css';
 import { Form } from './components/Form/Form';
 import { Header } from './components/layout/Header';
@@ -12,10 +12,10 @@ export const App = () => {
   const [posts, setPosts] = useState<PostEntity[] | null>(null);
   const [post, setPost] = useState<PostEntity | null>(null);
   const [search, setSearch] = useState('');
-
+  
   return (
     <>
-      <DataContext.Provider value={{ post, posts, setPost, setPosts, search,  setSearch}}>
+      <DataContext.Provider value={{ post, posts, setPost, setPosts, search,  setSearch }}>
         <div className="App">
           <Header />
           <div className="App-container">

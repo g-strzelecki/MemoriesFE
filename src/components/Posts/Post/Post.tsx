@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
-import { PostEntity } from '../../../../../memories-back/types/post';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faTrash } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import { DataContext } from '../../../contexts/posts.context';
 
 import './Post.css';
+import { PostEntity } from 'types';
 
 interface Props {
   post: PostEntity;
-  deletePost: () => void;
+  refreshPost: () => void;
 }
 
 export const Post = (props: Props) => {
 
-  const { setPost } = useContext(DataContext);
+  const { setPost, setSearch } = useContext(DataContext);
   
   const { id, author, createdAt, tags, title, selectedFile, likeCount } = props.post;
   const tagsTab = tags.split(',');
@@ -26,7 +26,7 @@ export const Post = (props: Props) => {
 
       await fetch(`http://localhost:3001/post/${id}`, { method: 'DELETE' });
 
-      props.deletePost();
+      props.refreshPost();
 
       setPost(null);
 
@@ -35,9 +35,35 @@ export const Post = (props: Props) => {
     }
   }
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
     setPost(props.post);
-    console.log(props.post);
+  };
+
+  const handleLike = async () => {
+    
+    const likeInc = ++props.post.likeCount;
+    const likeId = props.post.id;
+    
+    try {
+
+      await fetch(`http://localhost:3001/post/like/${id}`, {
+      method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          id: likeId, 
+          likeCount: likeInc
+        }),
+      });
+
+      props.refreshPost();
+      setSearch('');
+
+      } catch (error) {
+        console.log('Error: ', error);
+    }
+  
   };
 
   return (
@@ -60,7 +86,7 @@ export const Post = (props: Props) => {
         </div>
         <div className='card-title'>{title}</div>
         <div className='card-actions'>
-          <div className='card-like'>
+          <div className='card-like' onClick={handleLike}>
             <FontAwesomeIcon icon={faThumbsUp}/>
             {`Likes ${likeCount}`}
           </div>

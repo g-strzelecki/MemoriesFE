@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { PostEntity } from '../../../memories-back/types/post';
+import { PostEntity, SimplePostEntity } from '../../../memories-back/types/post';
 
 interface PostsContextType {
   post: PostEntity | null;
