@@ -18,4 +18,10 @@
   line-height: 2.5;
   border: 1px solid black;
   letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.btn-file-upload:hover:after {
+  background: #fff;
+  color: #000;
 }
