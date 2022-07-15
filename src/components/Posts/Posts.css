@@ -1,0 +1,43 @@
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-grow: 20;
+  order: 2;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  flex-grow: 1;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  max-width: 270px;
+  min-height: 270px;
+  overflow: hidden;
+}
+
+.loading {
+  color: #fff;
+}
+
+@media (orientation: landscape) and (min-width:768px) {
+
+  .posts {
+    justify-content: space-between;
+  }
+
+}
+
+@media (orientation: landscape) and (min-width:1025px) {
+
+  .posts {
+    padding: 0;
+    order: 1;
+  }
+
+  .post {
+    margin-right: 10px;
+  }
+}

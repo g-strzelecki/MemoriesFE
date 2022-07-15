@@ -1,0 +1,49 @@
+.add-form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  flex-grow: 2;
+  border-radius: 10px;
+  min-width: 300px;
+  order: 1;
+}
+
+.add-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.add-form input,
+.add-form textarea {
+  width: 100%;
+  margin-top: 5px;
+  padding: 5px 5px;
+}
+
+.add-form p,
+.add-form h4,
+.add-form h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px dotted black;
+  padding: 5px 0;
+}
+
+@media (orientation: landscape) and (min-width:1025px) {
+
+  .add-form {
+    margin-left: 10px;
+    order: 2;
+  }
+
+}

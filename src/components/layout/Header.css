@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.image {
+  margin-left: 15px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.header div {
+  display: flex;
+  margin-left: 20px;
+}
+
+.search input {
+  margin: 5px 0;
+  padding: 4px 5px;
+}
+
+.search button {
+  padding: 5px;
+}
