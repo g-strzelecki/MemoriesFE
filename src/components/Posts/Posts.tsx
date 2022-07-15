@@ -10,15 +10,11 @@ export const Posts = () => {
 
   const refreshPosts = () => {
     (async () => {
-      const res = await fetch('http://localhost:3001/post/search')
+      const res = await fetch(`http://localhost:3001/post/search`)
       const data = await res.json();
       setPosts(data);
     })();
   }
-
-  // const refreshLike = () => {
-  //   console.log('Działa');
-  // }
 
   useEffect(() => {
     (async () => {

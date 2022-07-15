@@ -2,7 +2,6 @@ import React, { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { Btn } from '../common/Btn';
 import { FileUploader } from '../FileUploader/FileUploader';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import { DataContext } from '../../contexts/posts.context';
 
 import './Form.css';
@@ -32,7 +31,7 @@ export const Form = () => {
   
   const refreshPosts = () => {
     (async () => {
-      const res = await fetch('http://localhost:3001/post/search')
+      const res = await fetch(`http://localhost:3001/post/search`)
       const data = await res.json();
       setPosts(data);
     })();
@@ -57,15 +56,15 @@ export const Form = () => {
           data.append('file', file);
     
           await axios.post('//localhost:3001/upload', data)
-            .then((e) => {
-              toast.success('Upload Success');
+            .then(() => {
+              console.error('Upload Success');
             })
-            .catch((e) => {
-              toast.error('Upload Failed');
+            .catch(() => {
+              console.error('Upload Failed');
             })
         }
   
-        const postRes = await fetch('http://localhost:3001/post', {
+        const postRes = await fetch(`http://localhost:3001/post`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
