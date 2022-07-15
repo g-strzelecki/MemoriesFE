@@ -8,10 +8,6 @@ export const Posts = () => {
 
   const {posts, setPosts, search} = useContext(DataContext);
 
-  // useEffect(() => {
-  //   console.log('Make Request ... ');
-  // },[search]);
-
   const refreshPosts = () => {
     (async () => {
       const res = await fetch('http://localhost:3001/post/search')
@@ -29,7 +25,7 @@ export const Posts = () => {
   }, [search]);
 
   return (
-    !(posts && posts.length > 0) 
+    !Array.isArray(posts) 
     ? <div className='loading'><h1>Posts loading...</h1></div> 
     : (
       <div className="posts">
