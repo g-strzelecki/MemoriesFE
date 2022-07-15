@@ -6,7 +6,11 @@ import './Posts.css';
 
 export const Posts = () => {
 
-  const {posts, setPosts} = useContext(DataContext);
+  const {posts, setPosts, search} = useContext(DataContext);
+
+  // useEffect(() => {
+  //   console.log('Make Request ... ');
+  // },[search]);
 
   const refreshPosts = () => {
     (async () => {
@@ -18,11 +22,11 @@ export const Posts = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('http://localhost:3001/post/search')
+      const res = await fetch(`http://localhost:3001/post/search/${search}`)
       const data = await res.json();
       setPosts(data);
     })();
-  }, []);
+  }, [search]);
 
   return (
     !(posts && posts.length > 0) 

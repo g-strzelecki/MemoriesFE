@@ -6,6 +6,8 @@ interface PostsContextType {
   setPost: (post: PostEntity | null) => void;
   posts: PostEntity[] | null;
   setPosts: (posts: PostEntity[] | null) => void;
+  search: string;
+  setSearch: (s: string) => void;
 }
 
 export const DataContext = createContext<PostsContextType>(null!);

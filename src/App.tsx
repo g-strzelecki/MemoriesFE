@@ -11,10 +11,11 @@ export const App = () => {
 
   const [posts, setPosts] = useState<PostEntity[] | null>(null);
   const [post, setPost] = useState<PostEntity | null>(null);
+  const [search, setSearch] = useState('');
 
   return (
     <>
-      <DataContext.Provider value={{ post, posts, setPost, setPosts }}>
+      <DataContext.Provider value={{ post, posts, setPost, setPosts, search,  setSearch}}>
         <div className="App">
           <Header />
           <div className="App-container">
