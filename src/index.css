@@ -10,6 +10,11 @@ body {
   /* overflow: hidden; */
 }
 
+button,
+a {
+  font-size: 13.333px;
+}
+
 body {
   background-color: #343a40;
   color: #343a40;
