@@ -5,8 +5,7 @@ import "./Auth.css";
 
 export const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
-
-  const isSignup = true;
+  const [isSignup, setIsSignup] = useState(false);
 
   const handleShowPassword = () => setShowPassword(prev => !prev);
 
@@ -16,6 +15,11 @@ export const Auth = () => {
 
   const handleChange = () => {
     console.log('handleChange working...');
+  };
+
+  const switchMode = () => {
+    setIsSignup((prev) => !prev);
+    setShowPassword(false);
   };
 
   return (
@@ -69,9 +73,14 @@ export const Auth = () => {
               />
             )
           }
-          <button type="submit">
-            { isSignup ? 'Sign Up' : 'Sign In' }
+          <button className="sing-in-up" type="submit">
+            { isSignup ? "Sign Up" : "Sign In" }
           </button>
+          <div className="container">
+            <button className="additional-sign-in-up" onClick={switchMode}>
+              { isSignup ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
+            </button>
+          </div>
         </form>
       </div>
     </div>
