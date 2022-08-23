@@ -23,7 +23,7 @@ export const Header = () => {
   return (
     <div className="header">
       <div>
-        <h1>Travel Memories</h1>
+      <Link className="header-h1" to="/">Travel Memories</Link>
         <img
           className="image"
           src="../../images/icons8-camera-96.png"

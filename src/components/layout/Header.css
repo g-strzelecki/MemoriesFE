@@ -9,6 +9,14 @@
   border-radius: 10px;
 }
 
+.header-h1 {
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #343a40;
+
+}
+
 .image {
   margin-left: 15px;
 }
