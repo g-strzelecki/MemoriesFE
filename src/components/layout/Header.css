@@ -27,7 +27,8 @@ h1 {
 
 .header div {
   display: flex;
-  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .search input {
@@ -46,6 +47,7 @@ h1 {
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  height: 28px;
 }
 
 @media (orientation: landscape) and (min-width:768px) {
